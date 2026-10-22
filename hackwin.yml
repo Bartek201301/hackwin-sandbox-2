@@ -1,0 +1,64 @@
+# The HackWin configuration of this project (hackwin.yml).
+# Written by `hackwin setup`. The Lead changes it only through a pull request; hooks, CI and
+# the Gate always read it from the default branch on GitHub.
+
+schema: 1
+cli_version: 0.1.0-pre.3
+project:
+  default_branch: main
+  language: en
+  event:
+    start: 2026-10-24T09:00:00+02:00
+    end: 2026-10-25T09:00:00+01:00
+team:
+  lead: Bartek201301
+  members:
+    - name: Bartek
+      github: Bartek201301
+      roles:
+        - shared
+        - greeting
+      agent: claude
+      sessions: 2
+    - name: Andrzej
+      github: test-bot-builder
+      roles:
+        - counter
+        - todos
+      agent: claude
+      sessions: 2
+commands:
+  install: npm ci
+  check: npm run check
+  test: npm test --
+  format: npm run format --
+  generate: null
+  lockfile_regen: npm install --package-lock-only
+  smoke: null
+paths:
+  contracts: []
+  generated: []
+  manifests:
+    - package.json
+  lockfiles:
+    - package-lock.json
+  gated:
+    migrations: []
+    production_config: []
+  ledger: null
+tasks:
+  max_files: 10
+gate:
+  poll_seconds: 60
+  ci_rerun_limit: 1
+  repeated_failure_threshold: 2
+  heartbeat_stale_seconds: 300
+  status_issue_seconds: 120
+  ci_timeout_minutes: 20
+  step_timeout_minutes: 20
+  known_flaky_tests: []
+  secret_patterns: []
+resolver:
+  enabled: false
+  model: null
+  max_turns: 30
